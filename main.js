@@ -58,7 +58,7 @@ var DEFAULT_SETTINGS = {
       name: "Google",
       baseUrl: "https://generativelanguage.googleapis.com/v1beta",
       apiKey: "",
-      models: ["gemini-2.0-flash", "gemini-1.5-pro", "gemini-1.5-flash"],
+      models: ["gemini-1.5-flash", "gemini-1.5-pro", "gemini-2.0-flash-exp"],
       enabled: true,
       apiFormat: "google"
     }
