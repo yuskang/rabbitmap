@@ -50,7 +50,7 @@ var DEFAULT_SETTINGS = {
       name: "Anthropic",
       baseUrl: "https://api.anthropic.com",
       apiKey: "",
-      models: ["claude-sonnet-4-20250514", "claude-3-5-sonnet-20241022", "claude-3-5-haiku-20241022", "claude-3-opus-20240229"],
+      models: ["claude-sonnet-4-5", "claude-sonnet-4-5-thinking", "claude-opus-4-5-thinking"],
       enabled: true,
       apiFormat: "anthropic"
     },
