@@ -1672,7 +1672,8 @@ ${msg.content}
     for (const m of messages) {
       apiMessages.push({ role: m.role, content: m.content });
     }
-    const response = await fetch(`${provider.baseUrl}/chat/completions`, {
+    const baseUrl = provider.baseUrl.replace(/\/+$/, "");
+    const response = await fetch(`${baseUrl}/chat/completions`, {
       method: "POST",
       headers,
       body: JSON.stringify({
@@ -1713,7 +1714,8 @@ ${msg.content}
     if (systemParts.length > 0) {
       requestBody.system = systemParts.join("\n\n");
     }
-    const response = await fetch(`${provider.baseUrl}/v1/messages`, {
+    const baseUrl = provider.baseUrl.replace(/\/+$/, "");
+    const response = await fetch(`${baseUrl}/v1/messages`, {
       method: "POST",
       headers,
       body: JSON.stringify(requestBody)
@@ -1752,7 +1754,8 @@ ${msg.content}
         parts: [{ text: systemParts.join("\n\n") }]
       };
     }
-    const response = await fetch(`${provider.baseUrl}/models/${model}:generateContent?key=${apiKey}`, {
+    const baseUrl = provider.baseUrl.replace(/\/+$/, "");
+    const response = await fetch(`${baseUrl}/models/${model}:generateContent?key=${apiKey}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

@@ -2199,7 +2199,9 @@ class RabbitMapView extends TextFileView {
 			apiMessages.push({ role: m.role, content: m.content });
 		}
 
-		const response = await fetch(`${provider.baseUrl}/chat/completions`, {
+		// Normalize baseUrl - remove trailing slash
+		const baseUrl = provider.baseUrl.replace(/\/+$/, "");
+		const response = await fetch(`${baseUrl}/chat/completions`, {
 			method: "POST",
 			headers,
 			body: JSON.stringify({
@@ -2250,7 +2252,9 @@ class RabbitMapView extends TextFileView {
 			requestBody.system = systemParts.join("\n\n");
 		}
 
-		const response = await fetch(`${provider.baseUrl}/v1/messages`, {
+		// Normalize baseUrl - remove trailing slash and ensure correct path
+		const baseUrl = provider.baseUrl.replace(/\/+$/, "");
+		const response = await fetch(`${baseUrl}/v1/messages`, {
 			method: "POST",
 			headers,
 			body: JSON.stringify(requestBody),
@@ -2301,8 +2305,10 @@ class RabbitMapView extends TextFileView {
 			};
 		}
 
+		// Normalize baseUrl - remove trailing slash
+		const baseUrl = provider.baseUrl.replace(/\/+$/, "");
 		// Google uses API key as query parameter
-		const response = await fetch(`${provider.baseUrl}/models/${model}:generateContent?key=${apiKey}`, {
+		const response = await fetch(`${baseUrl}/models/${model}:generateContent?key=${apiKey}`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
